@@ -1,0 +1,14 @@
+#formu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#formu label{
+    margin-bottom: 0.5vw;
+}
+
+#url{
+    margin-bottom: 0.5vw;
+}

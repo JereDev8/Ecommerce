@@ -1,0 +1,20 @@
+<h1>Productos</h1>
+{{#if productos}}
+<div class="cont-productos">
+    {{#each productos}}
+    <div class="card" style="width: 18rem;">
+        <img src={{thumbnail}} class="card-img-top img-card" alt="...">
+        <div class="card-body">
+            <h5>{{name}}</h5>
+            <b class="card-text">{{price}}</b>
+            <button type="button" id={{_id}} class="btn boton-comprar btn-primary">Agregar al Carrito</button>
+        </div>
+        
+    </div>
+    {{/each}}
+    {{else}}
+    <h2>There're not products :(</h2>
+    {{/if}}
+</div> 
+
+<script src="/static/js/products.js"></script>

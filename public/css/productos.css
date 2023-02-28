@@ -1,0 +1,33 @@
+.img-product{
+    width: 30px;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 1vw;
+    margin-bottom: 2vw;
+}
+
+
+.img-card{
+    height: 60%;
+    width: auto;
+}
+
+.cont-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0% 5%;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
