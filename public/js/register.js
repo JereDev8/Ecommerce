@@ -1,26 +1,20 @@
-const formulario= document.querySelector('.formu')
+const formulario= document.getElementById('formu')
 
 formulario.addEventListener('submit', (e)=>{
     e.preventDefault()
-    const datos= new FormData(formulario)
-    // const last_name= datos.get('last_name')
-    // const name= datos.get('name')
-    // const email= datos.get('email')
-    // const password= datos.get('password')
-    // console.log(last_name, name, email, password)
-    // const user= {name, last_name, email, password}
-    // console.log(user)
-    let data= {};
+    let datos= new FormData(formulario)
+    let data= {}
     datos.forEach((value, key)=>{
         data[key]= value
-    });
+    })
+    // console.log(data)
     fetch('/register', {
         method:'POST',
         body: JSON.stringify(data),
-        headers:{
-            "Content-Type": "application/json"
+        headers: {
+            'Content-type': 'application/json'
         }
     })
-    .then(respuesta=> respuesta.json())
+    .then(res=>{})
     .catch(err=> console.log(err))
 })

@@ -11,8 +11,10 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/productos',async (req, res)=>{
+    if(!req.session.user) return res.render('NoLog') 
     const productos= await productModel.find({}).lean()
     res.render('productos', {productos})
+    console.log(req.session.user)
 })
 
 router.delete('/productos/:id', async (req, res)=>{
@@ -21,7 +23,9 @@ router.delete('/productos/:id', async (req, res)=>{
 })
  
 router.get('/AgregarProductos', (req, res)=>{
-    res.render('newProduct')
+    if(!req.session.user)return res.render('NoLog');
+    if(req.session.user.role== 'user')return res.render('NoAutorizado')
+    return res.render('newProduct')
 })
 
 router.post('/AgregarProductos', async (req, res)=>{
