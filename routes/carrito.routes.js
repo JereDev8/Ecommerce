@@ -8,8 +8,9 @@ const router= Router()
 // debo traer el carrito de la db
 
 router.get('/carrito',async (req, res)=>{
+    if(!req.session.user) return res.render('NoLog');
     const productos= await productModel.find({})
-    res.render('carrito', {quantity: productos.length} )
+    res.render('carrito', {quantity: productos.length ,avatar: req.session.user.avatar})
 })
 
 router.post('/carrito', async (req, res)=>{

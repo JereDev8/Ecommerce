@@ -7,12 +7,19 @@ const productosdb= new ProductosDB()
 const router= Router()
 
 router.get('/', (req, res)=>{
-    res.render('inicio')
+    if(!req.session.user) return res.render('inicio')
+    res.render('inicio',{avatar: req.session.user.avatar});
+    
+    
 })
 
 router.get('/productos',async (req, res)=>{
+    if(!req.session.user){
+        const productos= await productModel.find({}).lean();
+        return res.render('productos', {productos})
+    } 
     const productos= await productModel.find({}).lean()
-    res.render('productos', {productos})
+    res.render('productos', {productos, avatar:req.session.user.avatar})
 })
 
 router.delete('/productos/:id', async (req, res)=>{
@@ -22,8 +29,8 @@ router.delete('/productos/:id', async (req, res)=>{
  
 router.get('/AgregarProductos', (req, res)=>{
     if(!req.session.user)return res.render('NoLog');
-    if(req.session.user.role== 'user')return res.render('NoAutorizado')
-    return res.render('newProduct')
+    if(req.session.user.role== 'user')return res.render('NoAutorizado', {avatar: req.session.user.avatar})
+    return res.render('newProduct', {avatar: req.session.user.avatar})
 })
 
 router.post('/AgregarProductos', async (req, res)=>{
