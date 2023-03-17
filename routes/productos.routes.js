@@ -11,10 +11,8 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/productos',async (req, res)=>{
-    if(!req.session.user) return res.render('NoLog') 
     const productos= await productModel.find({}).lean()
     res.render('productos', {productos})
-    console.log(req.session.user)
 })
 
 router.delete('/productos/:id', async (req, res)=>{

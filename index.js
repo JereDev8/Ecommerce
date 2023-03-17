@@ -1,3 +1,6 @@
+// este es un comentario
+
+
 import express, { urlencoded } from 'express'
 import __dirname from './utils.js'
 import dotenv from 'dotenv'
