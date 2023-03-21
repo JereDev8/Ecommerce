@@ -39,7 +39,7 @@ app.use(session({
         ttl:20
     }),
     secret:'shh',
-    resave: false,  
+    resave: true,  
     saveUninitialized: false
 })) 
 
