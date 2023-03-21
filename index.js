@@ -40,7 +40,7 @@ app.use(session({
     }),
     secret:'shh',
     resave: true,  
-    saveUninitialized: false
+    saveUninitialized: false  
 })) 
 
 app.use('/static', express.static(`${__dirname}/public`))

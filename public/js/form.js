@@ -7,7 +7,7 @@ form.addEventListener('submit', (e)=>{
     let data= new FormData(form)
     data.forEach((value, key)=> producto[key]= value)
     console.log(producto)
-    fetch('/AgregarProductos', {
+    fetch('/vender', {
         method: 'post',
         body: JSON.stringify(producto),
         headers: {

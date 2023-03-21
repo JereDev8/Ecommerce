@@ -27,13 +27,12 @@ router.delete('/productos/:id', async (req, res)=>{
     res.send(deleted.toString())
 })
  
-router.get('/AgregarProductos', (req, res)=>{
+router.get('/vender', (req, res)=>{
     if(!req.session.user)return res.render('NoLog');
-    if(req.session.user.role== 'user')return res.render('NoAutorizado', {avatar: req.session.user.avatar})
     return res.render('newProduct', {avatar: req.session.user.avatar})
 })
 
-router.post('/AgregarProductos', async (req, res)=>{
+router.post('/vender', async (req, res)=>{
     const {name, price, thumbnail}= req.body
     if(!price || !name || !thumbnail) res.send('Debes llenar todos los campos')
     else await productosdb.createProduct({name, price, thumbnail})
