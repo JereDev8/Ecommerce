@@ -14,6 +14,8 @@ import routeRegister from './routes/register.routes.js'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
+import initializeStrategies from './Auth/passport.config.js'
+import passport from 'passport'
 
 
 mongoose.set('strictQuery', true)
@@ -41,8 +43,10 @@ app.use(session({
     secret:'shh',
     resave: true,  
     saveUninitialized: false  
-})) 
-
+}))
+initializeStrategies();
+app.use(passport.initialize());
+app.use(passport.session()); 
 app.use('/static', express.static(`${__dirname}/public`))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
