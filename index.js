@@ -9,6 +9,7 @@ import handlebars from 'express-handlebars'
 import productModel from './models/Productos.js'
 import routeCarritos from './routes/carrito.routes.js'
 import routeLogin from './routes/login.routes.js'
+import routeEmail from './routes/email.routes.js'
 import routeRegister from './routes/register.routes.js'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
@@ -58,7 +59,7 @@ app.use(routeProducts)
 app.use(routeCarritos)
 app.use(routeRegister)
 app.use(routeLogin)
-
+app.use(routeEmail)
 
 app.listen(PORT, ()=> console.log(`Server listening on http://localhost:${PORT}`))  
 
