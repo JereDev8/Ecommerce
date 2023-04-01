@@ -1,6 +1,7 @@
 import { Router } from "express";
 import carritoModel from "../models/Carrito.js";
 import productModel from "../models/Productos.js";
+import userModel from "../models/User.js";
 
 const router= Router()
 
@@ -9,12 +10,13 @@ const router= Router()
 
 router.get('/carrito',async (req, res)=>{
     if(!req.session.user) return res.render('NoLog');
-    const productos= await productModel.find({})
-    res.render('carrito', {quantity: productos.length ,avatar: req.session.user.avatar})
+    const user= await userModel.findOne({email: req.session.user.email})
+    console.log(user.carrito)
+    res.render('carrito', {productos: user.carrito ,avatar: req.session.user.avatar})
 })
 
 router.post('/carrito', async (req, res)=>{
     console.log(req.body)
-})
+}) 
 
 export default router

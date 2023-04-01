@@ -1,6 +1,7 @@
 import { Router } from "express";
 import productModel from "../models/Productos.js";
 import ProductosDB from '../DAOs/productosDB.js'
+import userModel from "../models/User.js";
 
 const productosdb= new ProductosDB()
 
@@ -19,6 +20,7 @@ router.get('/productos',async (req, res)=>{
         return res.render('productos', {productos})
     } 
     const productos= await productModel.find({}).lean()
+    
     res.render('productos', {productos, avatar:req.session.user.avatar})
 })
 
@@ -42,6 +44,18 @@ router.put('/productos/:id',async (req, res)=>{
     await productosdb.updateProduct(req.params.id, req.body)
     const found= await productModel.find({_id: req.params.id})
     res.send(found)
+})
+
+router.post('/productos', async (req, res)=>{
+    const { id }= req.body;
+    // console.log(id)
+    // ME LLEGÓ EL ID DEL PRODUCTO QUE DESEA CARGAR EN EL CARRITO, POR LO TANTO DEBO PONER LA LOGICA DE NEGOCIO 
+    const producto= await productModel.findOne({_id:id});
+    if(!req.session.user) return res.status(400).send({status:'Error', message: 'Debes estar logueado para agregar productos al carrito'})
+    // console.log(req.session.user.email);
+    const user= await userModel.findOne({email: req.session.user.email});
+    console.log(user.carrito)
+    await userModel.updateOne({email: req.session.user.email}, {$push:{'carrito':producto}});
 })
 
 
