@@ -7,11 +7,11 @@ const LocalStrategy = local.Strategy
 
 const initializeStrategies = () => {
     passport.use('login', new LocalStrategy({ usernameField: 'email' },async (email, password, done) => {
-        if (!email || !password) done(null, false, {message: 'Debes completar todos los campos'})
+        if (!email || !password) return done(null, false, {message: 'Debes completar todos los campos'})
         const exist = await userModel.findOne({email});
         // console.log(exist)
-        if (!exist) done(null, false, {message: 'Este email no esta registrado'})
-        if (exist.password != password) done(null, false, {message: 'La contraseña no es valida'})
+        if (!exist) return done(null, false, {message: 'Este email no esta registrado'})
+        if (exist.password != password) return done(null, false, {message: 'La contraseña no es valida'})
         return done(null, exist)
     }))
 

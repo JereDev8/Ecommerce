@@ -7,7 +7,7 @@
         <div class="card-body">
             <h5>{{name}}</h5>
             <b class="card-text">{{price}}</b>
-            <button type="button" id={{_id}} class="btn boton-comprar btn-primary">Agregar al Carrito</button>
+            <button type="button" id={{_id}} class="btn boton-comprar{{@index}} btn-primary">Agregar  al Carrito</button>
         </div>
         
     </div>
@@ -18,3 +18,4 @@
 </div> 
 
 <script src="/static/js/products.js"></script>
+<script src="/static/js/carrito.js"></script>
