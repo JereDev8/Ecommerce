@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.anchor_carrito{
+    margin: 0;
+}
+
 .cont-logo{
     display: flex;
     justify-content: center;
@@ -48,7 +52,7 @@
 
 .cont-avatar img{
     width: 2vw;
-    margin: 1vw;
+    margin: 0vw;
 }
 
 /* avatar */

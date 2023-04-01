@@ -1,5 +1,15 @@
 <h1>Mi carrito</h1>
 
+{{#each productos}}
+    <div class="card" style="width: 18rem;">
+        <img src={{thumbnail}} class="card-img-top img-card" alt="...">
+        <div class="card-body">
+            <h5>{{name}}</h5>
+            <b class="card-text">{{price}}</b>
+            <button type="button" id={{_id}} class="btn boton-comprar{{@index}} btn-primary">Sacar del carrito</button>
+        </div>
+        
+    </div>
+{{/each}}
 
-
-<script src="/static/js/carrito.js"></script>
+{{!-- <script src="/static/js/carrito.js"></script> --}}

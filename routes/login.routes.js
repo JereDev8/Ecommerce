@@ -1,4 +1,5 @@
 import { Router } from "express";
+import passport from "passport";
 import userModel from "../models/User.js";
 
 
@@ -8,22 +9,22 @@ router.get('/login', (req, res)=>{
     res.render('login')
 })
 
-router.post('/login',async (req, res)=>{
-    const {email, password}= req.body;
-    if(!email || !password) return res.status(400).send({message:'Debes completar todos los campos'})
-    const exist= await userModel.findOne({email});
-    // console.log(exist)
-    if(!exist) return res.status(400).send({message:'Este email no esta registrado'})
-    if(exist.password != password) return res.status(400).send({message:'La contraseña no es valida'})
+router.post('/login', passport.authenticate('login', {failureRedirect:'/loginFail',failureMessage:true}) , async (req, res)=>{
+    // console.log(req.user)
+    const user= req.user;
     req.session.user= {
-        email,
-        avatar:exist.avatar ,
-        role: exist.role,
-        name: exist.name,
-        last_name: exist.last_name,
-        // avatar: exist.avatar
+        email: user.email,
+        avatar:user.avatar, 
+        role: user.role,
+        name: user.name,
+        last_name: user.last_name,
+        carrito: user.carrito
     }
-    return res.status(200).send({message:'Logueado exitosamente'})
+    res.status(200).send({message:'Logueado exitosamente'})
+})
+
+router.get('/loginFail', (req, res)=>{
+    res.render('loginFail')
 })
 
 export default router

@@ -1,5 +1,4 @@
-// nuevamente en development
-
+//en Clase-36
 
 import express, { urlencoded } from 'express'
 import __dirname from './utils.js'
@@ -10,10 +9,13 @@ import handlebars from 'express-handlebars'
 import productModel from './models/Productos.js'
 import routeCarritos from './routes/carrito.routes.js'
 import routeLogin from './routes/login.routes.js'
+import routeEmail from './routes/email.routes.js'
 import routeRegister from './routes/register.routes.js'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
+import initializeStrategies from './Auth/passport.config.js'
+import passport from 'passport'
 
 
 mongoose.set('strictQuery', true)
@@ -41,8 +43,10 @@ app.use(session({
     secret:'shh',
     resave: true,  
     saveUninitialized: false  
-})) 
-
+}))
+initializeStrategies();
+app.use(passport.initialize());
+app.use(passport.session()); 
 app.use('/static', express.static(`${__dirname}/public`))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -55,7 +59,7 @@ app.use(routeProducts)
 app.use(routeCarritos)
 app.use(routeRegister)
 app.use(routeLogin)
-
+app.use(routeEmail)
 
 app.listen(PORT, ()=> console.log(`Server listening on http://localhost:${PORT}`))  
 
