@@ -20,8 +20,8 @@ router.get('/productos',async (req, res)=>{
         return res.render('productos', {productos})
     } 
     const productos= await productModel.find({}).lean()
-    
-    res.render('productos', {productos, avatar:req.session.user.avatar})
+    const sessOn= []
+    res.render('productos', {productos, avatar:req.session.user.avatar, sessOn})
 })
 
 router.delete('/productos/:id', async (req, res)=>{
@@ -47,14 +47,11 @@ router.put('/productos/:id',async (req, res)=>{
 })
 
 router.post('/productos', async (req, res)=>{
-    const { id }= req.body;
-    // console.log(id)
-    // ME LLEGÓ EL ID DEL PRODUCTO QUE DESEA CARGAR EN EL CARRITO, POR LO TANTO DEBO PONER LA LOGICA DE NEGOCIO 
-    const producto= await productModel.findOne({_id:id});
     if(!req.session.user) return res.status(400).send({status:'Error', message: 'Debes estar logueado para agregar productos al carrito'})
-    // console.log(req.session.user.email);
+    const { id }= req.body;
+    const producto= await productModel.findOne({_id:id});
     const user= await userModel.findOne({email: req.session.user.email});
-    console.log(user.carrito)
+    // console.log(user.carrito)
     await userModel.updateOne({email: req.session.user.email}, {$push:{'carrito':producto}});
 })
 

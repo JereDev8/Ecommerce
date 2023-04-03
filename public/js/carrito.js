@@ -1,5 +1,5 @@
 // Selector Padre
-const parent = document.querySelector('.cont-productos');
+const parent = document.querySelector('.cont-cards-prods');
 
 // Cantidad de div
 const divs = parent.childElementCount;
