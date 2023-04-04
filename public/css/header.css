@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+
+
+
 .anchor_carrito{
     margin: 0;
 }
@@ -20,7 +23,7 @@
 }
 
 .cont-input{
-    width: 42%;
+    width: 50%;
 }
 
 .input-producto{
@@ -47,7 +50,7 @@
     justify-content: start;
     padding-left: 5%;
     align-items: center;
-    width: 33%;
+    width: 20%;
 }
 
 .cont-avatar img{
@@ -56,6 +59,22 @@
 }
 
 /* avatar */
+
+.cont-perfil-avatar{
+    width: 40px;
+    height: 40px;
+}
+
+.cont-perfil-avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.options-perfil{
+    margin-left: 5px;
+}
 
 /* /avatar */
 
@@ -94,4 +113,53 @@
 .cont-navegacion nav ul li a{
     text-decoration: none;
     color: #000;
+}
+
+.cont-img-main{
+    width: 100%;
+}
+
+.cont-img-main img{
+    width: 100%;
+    object-fit: contain;
+}
+
+/* 568CBD */
+
+.betweenheader{
+    width: 100%;
+    background-color: #474747;
+    height: 50px;
+    /* border: 2px solid; */
+    display: flex;
+}
+
+.first-between{
+    width: 25%;
+}
+
+.second-between{
+    width: 50%;
+}
+
+.second-between ul{
+    display: flex;
+    height:100% ;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.second-between ul li{
+    list-style: none;
+    color: #dbdbdb;
+    font-weight: 400;
+}
+
+.second-between ul li a{
+    text-decoration: none;
+    color: #dbdbdb;
+}
+
+.third-between{
+    width: 25%;
 }

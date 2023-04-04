@@ -16,7 +16,9 @@
 
 <body>
   <header class="cont-nav">
-    <div class="cont-logo"> <a href="#"><img src="/static/images/logo.png" alt=""></a> </div>
+    <div class="cont-logo"> 
+      <a href="/"><img src="/static/images/logo.png" alt=""></a> 
+    </div>
     <div class="cont-input">
       <div class="input-producto">
         <input type="text" placeholder="Buscar Producto...">
@@ -37,11 +39,13 @@
       <img src="/static/images/notification.png" alt="">
       <a href="/carrito"> <img class="anchor_carrito" src="/static/images/cart.png" alt="Carrito"> </a>
       
-      {{#if avatar}} 
-      <img src={{avatar}} class="rounded-circle" style="width: 30px;" alt="Avatar">
+      {{#if avatar}}
+      <div class="cont-perfil-avatar"> 
+      <img src={{avatar}} class="circle-avatar" alt="Avatar">
+      </div>
       <div class="dropdown">
           <button
-            class="btn btn-secondary dropdown-toggle"
+            class="btn btn-secondary dropdown-toggle options-perfil"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -56,6 +60,20 @@
       {{else}}<a class="navbar-brand" href="/login">Sign in</a> {{/if}}
     </div>
   </header>
+  <div class="betweenheader">
+    <div class="first-between"></div>
+    <div class="second-between">
+      <ul>
+        <li> <a href="/">Inicio</a> </li>
+        <li>Ofertas</li>
+        <li>Cliente</li>
+        <li>Categorias</li>
+        <li>Servicios</li>
+        <li>Politicas</li>
+      </ul>
+    </div>
+    <div class="third-between"></div>
+  </div>
   {{{body}}}
 
   {{!-- <img src={{avatar}} class="rounded-circle" style="width: 30px;" alt="Avatar"> --}}
