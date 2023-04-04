@@ -7,9 +7,10 @@ const productosdb= new ProductosDB()
 
 const router= Router()
 
-router.get('/', (req, res)=>{
-    if(!req.session.user) return res.render('inicio')
-    res.render('inicio',{avatar: req.session.user.avatar});
+router.get('/', async (req, res)=>{
+    const productos= await productModel.find({}).lean();
+    if(!req.session.user) return res.render('inicio', {productos})
+    res.render('inicio',{avatar: req.session.user.avatar, productos});
     
     
 })
