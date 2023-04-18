@@ -15,6 +15,11 @@ const schema= new mongoose.Schema({
     thumbnail:{
         type: String,
         required:true
+    },
+    category:{
+        type: String,
+        enum:['Electrodomesticos', 'Computacion', 'Hogar', 'Instrumentos', 'Gaming', 'Libros', 'Ropa deportiva', 'Celulares'],
+        required: true
     }
 })
 

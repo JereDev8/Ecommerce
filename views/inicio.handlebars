@@ -1,31 +1,97 @@
-
 <div class="cont-img-main">
     <img src="/static/images/ecommerce-prods.jpg" alt="">
 </div>
+<div class="cont-title-cat">
+    <h3 class="title-cat">{{categoria}}</h3>
+</div>
+<div class="cont-carro">
+    <div class="carousel">
+        {{#each productos}}
 
-{{#if productos}}
-<div class="cont-cards-prods">
-    {{#each productos}}
-    <div class="card">
-        <div class="cont-img-prod">
-            <img src={{thumbnail}} alt="">
-        </div>
-        <div class="info-prod">
-            <div class="cont-name-prod">
-                <h4>{{name}}</h4>
-                <b> {{price}} </b>
+        <div class="card card-carousel" style="width: 18rem; height: 300px">
+            <img src={{thumbnail}} class="card-img-top" style="height:80%; object-fit:contain" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">${{price}}</p>
             </div>
-            <p>Envio gratis</p>
         </div>
-        <div class="btn-agregar">
-            <button id={{_id}} class="boton-comprar{{@index}}"> Agregar al carrito </button>
-        </div>
+
+        {{/each}}
     </div>
-    {{/each}}
-    {{else}}
-    <h2>There're not products :(</h2>
-    {{/if}}
+
 </div>
 
-<script src="/static/js/products.js"></script>
-<script src="/static/js/carrito.js"></script>
+    <div class="cont-categories">
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/12/11-mitos-electrodomesticos-hora-dejes-creerte-2157733.jpg?tf=3840x" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Electrodomesticos</p>
+        </div>
+    </div>
+        <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://media.gq.com.mx/photos/621d0280343bc6058cdec533/16:9/w_2560%2Cc_limit/GettyImages-1068128738-hombre-corriendo-running.jpg" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Ropa deportiva</p>
+        </div>
+    </div>
+    
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://www.cronista.com/files/image/419/419139/61d3378d218ac.jpg" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Celulares</p>
+        </div>
+    </div>
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://i.blogs.es/131c5e/sofaportada/450_1000.jpeg" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Hogar</p>
+        </div>
+    </div>
+    
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://elordenmundial.com/wp-content/uploads/2022/12/libros-el-orden-mundial-2022.jpg" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Libros</p>
+        </div>
+    </div>
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://culturageek.com.ar/wp-content/uploads/2021/01/Culturageek.com_.ar-Corsair-HS-60-Review-08-e1611326866457.png" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Computacion</p>
+        </div>
+    </div>
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://us.123rf.com/450wm/liudmilachernetska/liudmilachernetska2108/liudmilachernetska210814292/173543538-conjunto-de-diferentes-instrumentos-musicales-sobre-fondo-de-madera-endecha-plana.jpg?ver=6" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Instrumentos</p>
+        </div>
+    </div>
+    <div class="card-category">
+        <div class="cont-img-category">
+        <img src="https://www.destreaming.es/wp-content/uploads/2020/11/pc_para_streaming_gaming.jpg" class="" alt="...">
+        </div>
+        <div class="body-categ">
+            <p style="margin-bottom:0rem;">Gaming</p>
+        </div>
+    </div>
+</div>
+    
+    <script src="/static/js/products.js"></script>
+    <script src="/static/js/carrito.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/static/js/carousel.js"></script>

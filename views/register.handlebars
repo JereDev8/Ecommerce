@@ -1,4 +1,4 @@
-<form id="formu" enctype="multipart/form-data">
+{{!-- <form id="formu" enctype="multipart/form-data">
     <label for="">Nombre</label>
     <input name="name" type="text"> <br>
     <label for="">Apellido</label>
@@ -10,6 +10,31 @@
     <label for="">Imagen de perfil</label>
     <input type="file" name="avatar">
     <input type="submit" value="Registrar">
+</form> --}}
+
+<div class="cont-form-reg">
+
+<form id="formu">
+  
+    <label for="exampleInputEmail1">Nombre</label>
+    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  
+  
+    <label for="exampleInputPassword1">Apellido</label>
+    <input name="last_name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  
+  
+    <label for="exampleInputPassword1">Password</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  
+    <label for="formFile" class="form-label">Imagen de perfil</label>
+    <input class="form-control" type="file" id="formFile" name="avatar">
+
+  <button type="submit" class="btn btn-subm btn-primary">Register</button>
 </form>
 
+</div>
 <script src="/static/js/register.js"></script>

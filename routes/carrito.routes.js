@@ -12,6 +12,7 @@ router.get('/carrito',async (req, res)=>{
     if(!req.session.user) return res.render('NoLog');
     const user= await userModel.findOne({email: req.session.user.email})
     console.log(user.carrito)
+    if(user.carrito.length == 0) return res.render('carrito', {avatar: req.session.user.avatar})
     res.render('carrito', {productos: user.carrito ,avatar: req.session.user.avatar})
 })
 

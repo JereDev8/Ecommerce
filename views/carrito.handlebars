@@ -1,5 +1,7 @@
 <h1>Mi carrito</h1>
 
+
+{{#if productos}}
 {{#each productos}}
     <div class="card" style="width: 18rem;">
         <img src={{thumbnail}} class="card-img-top img-card" alt="...">
@@ -11,5 +13,8 @@
         
     </div>
 {{/each}}
+{{else}} <h3>No hay productos en el carrito</h3>
+{{/if}}
+
 
 {{!-- <script src="/static/js/carrito.js"></script> --}}
