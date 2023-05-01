@@ -35,7 +35,15 @@ body{
     height: 50%;
 }
 
-.input-producto input{
+.input-producto form{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-producto form .search-pr{
+    width: 70%;
     padding: 1% 25% 1% 5%;
     border-radius: 4px;
     border: none;
@@ -43,10 +51,28 @@ body{
     background-color: #efefef;
 }
 
-.input-producto img{
+.input-producto form .icon-search{
+    width: 40px;
+    height: auto;
+    background: transparent;
+    background-image: url("../images/search.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+/* .input-producto .search-pr{
+    padding: 1% 25% 1% 5%;
+    border-radius: 4px;
+    border: none;
+    margin-right: 1vw;
+    background-color: #efefef;
+}
+
+.input-producto .icon-search{
     width: 3%;
     cursor: pointer;
-}
+} */
 
 .cont-avatar{
     display: flex;

@@ -25,8 +25,10 @@
     </div>
     <div class="cont-input">
       <div class="input-producto">
-        <input type="text" placeholder="Buscar Producto..." id="inp-busqueda-prod">
-        <img src="/static/images/search.png" class="icon-search" alt="">
+        <form action="/searchProduct" method="post">
+        <input type="text" name="producto" class="search-pr" placeholder="Buscar Producto..." id="inp-busqueda-prod">
+        <input type="submit" class="icon-search" value="" >
+        </form>
       </div>
       <div class="cont-navegacion">
         <nav>

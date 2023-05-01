@@ -10,7 +10,6 @@ router.get('/login', (req, res)=>{
 })
 
 router.post('/login', passport.authenticate('login', {failureRedirect:'/loginFail',failureMessage:true}) , async (req, res)=>{
-    // console.log(req.user)
     const user= req.user;
     req.session.user= {
         email: user.email,
@@ -20,7 +19,9 @@ router.post('/login', passport.authenticate('login', {failureRedirect:'/loginFai
         last_name: user.last_name,
         carrito: user.carrito
     }
-    res.status(200).send({message:'Logueado exitosamente'})
+    // console.log('hola')
+    res.redirect('/')
+    // res.status(200).send({message:'Logged succesfully'})
 })
 
 router.get('/loginFail', (req, res)=>{

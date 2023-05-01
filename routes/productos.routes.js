@@ -14,10 +14,6 @@ router.get('/', async (req, res)=>{
 })
 
 
-router.post('/redirect', (req, res)=>{
-    res.redirect('/productos')
-})
-
 router.get('/productos',async (req, res)=>{
     if(!req.session.user){
         const productos= await productModel.find({}).lean();
@@ -60,6 +56,17 @@ router.post('/productos', async (req, res)=>{
     await userModel.updateOne({email: req.session.user.email}, {$push:{'carrito':producto}});
 })
 
+
+router.get('/productos/:name', async (req, res)=>{
+    const prods= await productModel.find({name:{$regex:req.params.name, $options:'i'}}).lean();
+    if(!req.session.user) return res.render('producto-buscado', {prods}) 
+    await res.render('producto-buscado', {prods, avatar:req.session.user.avatar})
+})
+
+router.post('/searchProduct', async (req, res)=>{
+    const url= await `/productos/${req.body.value}`;
+    await res.redirect(url)
+})
 
 const prodsNuevos= [
     {
