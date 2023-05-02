@@ -24,28 +24,6 @@ router.get('/productos',async (req, res)=>{
     res.render('productos', {productos, avatar:req.session.user.avatar, sessOn})
 })
 
-router.delete('/productos/:id', async (req, res)=>{
-    const deleted= await productosdb.deleteProduct(req.params.id)
-    res.send(deleted.toString())
-})
- 
-router.get('/vender', (req, res)=>{
-    if(!req.session.user)return res.render('NoLog');
-    return res.render('newProduct', {avatar: req.session.user.avatar})
-})
-
-router.post('/vender', async (req, res)=>{
-    const {name, price, thumbnail}= req.body
-    if(!price || !name || !thumbnail) res.send('Debes llenar todos los campos')
-    else await productosdb.createProduct({name, price, thumbnail})
-})
-
-router.put('/productos/:id',async (req, res)=>{
-    await productosdb.updateProduct(req.params.id, req.body)
-    const found= await productModel.find({_id: req.params.id})
-    res.send(found)
-})
-
 router.post('/productos', async (req, res)=>{
     if(!req.session.user) return res.status(400).send({status:'Error', message: 'Debes estar logueado para agregar productos al carrito'})
     console.log(req.body)
