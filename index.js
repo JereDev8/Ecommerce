@@ -1,5 +1,7 @@
 //en Clase-36
  
+
+// A implementar, crear un checkpoint donde pueda entrar a ver un producto y ya ver mas caracteristicas y que me de la opcion de comprar como en MELI
 import express, { urlencoded } from 'express'
 import __dirname from './utils.js'
 import dotenv from 'dotenv'
