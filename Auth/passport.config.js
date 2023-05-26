@@ -1,7 +1,7 @@
 import passport from "passport";
 import local from 'passport-local'
 import userModel from "../models/User.js";
-
+import bcrypt from "bcrypt"
 
 const LocalStrategy = local.Strategy
 
@@ -10,9 +10,10 @@ const initializeStrategies = () => {
         if (!email || !password) return done(null, false, {message: 'Debes completar todos los campos'})
         const exist = await userModel.findOne({email});
         // console.log(exist)
-        if (!exist) return done(null, false, {message: 'Este email no esta registrado'})
-        if (exist.password != password) return done(null, false, {message: 'La contraseña no es valida'})
-        return done(null, exist)
+        if (!exist) return done(null, false, {message: 'Este email no esta registrado'});
+        const compare = await bcrypt.compare(password, exist.password)
+        if (compare) return done(null, exist)
+        return done(null, false, {message: 'La contraseña no es valida'})
     }))
 
     passport.serializeUser((user, done)=>{

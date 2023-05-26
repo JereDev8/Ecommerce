@@ -3,6 +3,8 @@ import productModel from "../models/Productos.js";
 import ProductosDB from '../DAOs/productosDB.js'
 import userModel from "../models/User.js";
 
+const date = new Date()
+
 const productosdb= new ProductosDB()
 
 const router= Router()
@@ -14,7 +16,7 @@ router.get('/', async (req, res)=>{
 })
 
 
-router.get('/productos',async (req, res)=>{
+router.get('/products',async (req, res)=>{
     if(!req.session.user){
         const productos= await productModel.find({}).lean();
         return res.render('productos', {productos})
@@ -24,7 +26,7 @@ router.get('/productos',async (req, res)=>{
     res.render('productos', {productos, avatar:req.session.user.avatar, sessOn})
 })
 
-router.post('/productos', async (req, res)=>{
+router.post('/products', async (req, res)=>{
     if(!req.session.user) return res.status(400).send({status:'Error', message: 'Debes estar logueado para agregar productos al carrito'})
     console.log(req.body)
     const { id }= req.body;
@@ -34,15 +36,20 @@ router.post('/productos', async (req, res)=>{
     await userModel.updateOne({email: req.session.user.email}, {$push:{'carrito':producto}});
 })
 
+router.post('/redir-prods', async (req, res)=>{
+    await res.redirect('/products') 
+})
 
-router.get('/productos/:name', async (req, res)=>{
+
+router.get('/products/:name', async (req, res)=>{
     const prods= await productModel.find({name:{$regex:req.params.name, $options:'i'}}).lean();
     if(!req.session.user) return res.render('producto-buscado', {prods}) 
     await res.render('producto-buscado', {prods, avatar:req.session.user.avatar})
+    // que puedan agregar desde este checkpoint al carrito
 })
 
 router.post('/searchProduct', async (req, res)=>{
-    const url= await `/productos/${req.body.value}`;
+    const url= await `/products/${req.body.value}`;
     await res.redirect(url)
 })
 

@@ -1,20 +1,66 @@
-<h1>Mi carrito</h1>
+<div class="cont-x2">
+    <div id="cont-carrito">
+        <h3>Mi carrito</h3>
+        <div class="carrito">
+            
+                {{#if productos}}
+                {{#each productos}}
+                <div class="card-carr">
+                    <div>
+                        <img src={{thumbnail}} alt="">
+                    </div>
+                    <div>
+                        <h4>{{name}}</h4>
+                        <p>{{price}}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary quitarDelCarrito{{@index}}" id={{_id}}>Sacar del
+                            carrito</button>
+                    </div>
+                </div>
+            
 
+            {{/each}}
+            {{else}} <h3>No hay productos en el carrito</h3>
+            {{/if}}
+            
+            {{#if total}}
+            <div style="display: flex;">
+                <div style="width: 50%;">
+                    <div> <b> Total </b> </div>
+                    <div id="total"> <b> {{total}} </b> </div>
+                </div>
+                <div style="width: 50%; display: flex; justify-content: end; align-items: center;">
+                    <form action="/comprandoCarrito" method="post">
+                    <button id="btnConsCarr" type="submit" style="padding: .5vh;"> Comprar </button>
+                    </form>
+                </div>
+            </div>
+            {{/if}}
 
-{{#if productos}}
-{{#each productos}}
-    <div class="card" style="width: 18rem;">
-        <img src={{thumbnail}} class="card-img-top img-card" alt="...">
-        <div class="card-body">
-            <h5>{{name}}</h5>
-            <b class="card-text">{{price}}</b>
-            <button type="button" id={{_id}} class="btn boton-comprar{{@index}} btn-primary">Sacar del carrito</button>
         </div>
-        
     </div>
-{{/each}}
-{{else}} <h3>No hay productos en el carrito</h3>
-{{/if}}
+</div>
 
 
-{{!-- <script src="/static/js/carrito.js"></script> --}}
+<script src="/static/js/carrito2.js"></script>
+
+{{!--
+<script src="/static/js/carrito.js"></script> --}}
+{{!-- <div class="card" style="width: 18rem;">
+    <img src={{thumbnail}} class="card-img-top img-card" alt="...">
+    <div class="card-body">
+        <h5>{{name}}</h5>
+        <b class="card-text">{{price}}</b>
+        <button type="button" id={{_id}} class="btn boton-comprar{{@index}} btn-primary">Sacar del
+            carrito</button>
+    </div>
+
+</div> --}}
+{{!-- <div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{price}}</p>
+        <button class="btn btn-primary">Sacar del carrito</button>
+    </div>
+</div> --}}

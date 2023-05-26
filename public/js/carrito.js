@@ -1,3 +1,5 @@
+
+
 // Selector Padre
 const parent = document.querySelector('.cont-cards-prods');
 
@@ -5,14 +7,12 @@ const parent = document.querySelector('.cont-cards-prods');
 const divs = parent.childElementCount;
 
 
-// console.log(divs)
-
 for(let i=0; i<divs; i++){
     let button= document.querySelector(`.boton-comprar${i}`)
     button.addEventListener('click', async (e)=>{
         let idProduct= {id: button.id}
         console.log(typeof idProduct)
-        await fetch('/productos', {
+        await fetch('/products', {
             method:'POST',
             body:JSON.stringify(idProduct) ,
             headers:{

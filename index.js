@@ -6,9 +6,9 @@ import express, { urlencoded } from 'express'
 import __dirname from './utils.js'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import routeProducts from './routes/productos.routes.js'
 import handlebars from 'express-handlebars'
 import productModel from './models/Productos.js'
+import routeProducts from './routes/productos.routes.js'
 import routeCarritos from './routes/carrito.routes.js'
 import routeLogin from './routes/login.routes.js'
 import routeEmail from './routes/email.routes.js'
@@ -32,7 +32,7 @@ const app= express()
 const conexion= mongoose.connect(`${process.env.MONGO_DB_URL}`, (err)=>{
     if(!err) console.log('Base de datos conectada con exito') 
     else console.log('Error al intentar conectar la base de datos')
-})
+}) 
 
 
 // middlewares
@@ -40,7 +40,7 @@ app.use(cookieParser())
 app.use(session({
     store: MongoStore.create({
         mongoUrl:`${process.env.MONGO_DB_URL}`,
-        ttl:30
+        ttl:180
     }),
     secret:'shh',
     resave: true,  
