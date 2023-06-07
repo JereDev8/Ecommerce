@@ -5,6 +5,21 @@ class ProductosDB {
     constructor() {
 
     }
+
+    async eightProdsDTO(categoria){
+        const productos= await productModel.find({category: categoria}).lean();
+        let eightProds= [];
+        for(let i=0; i<8; i++){
+            eightProds.push(productos[i])
+        }
+        return eightProds
+    }
+    
+    async eightCategories(){
+        console.log(productModel.schema.path('category').enumValues)
+        
+    }
+
     async createProduct(newProduct) {
         try {
             await productModel.create(newProduct);

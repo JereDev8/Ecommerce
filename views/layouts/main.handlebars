@@ -1,20 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/productos.css">
-    <link rel="stylesheet" href="/static/css/newProducts.css">
-    <link rel="stylesheet" href="/static/css/register.css">
-    <title>{{title}}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/productos.css">
+  <link rel="stylesheet" href="/static/css/newProducts.css">
+  <link rel="stylesheet" href="/static/css/register.css">
+  <link rel="stylesheet" href="/static/css/header.css">
+  <link rel="stylesheet" href="/static/css/login.css">
+  <link rel="stylesheet" href="/static/css/carrito.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <title>{{title}}</title>
 </head>
-    <body>
-<nav class="navbar navbar-expand-lg bg-primary">
+
+<body>
+  <header class="cont-nav">
+    <div class="cont-logo">
+      <a href="/"><img src="/static/images/logo.png" alt=""></a>
+    </div>
+    <div class="cont-input">
+      <div class="input-producto">
+        <form action="/searchProduct" method="post">
+          <input type="text" name="producto" class="search-pr" placeholder="Buscar Producto..." id="inp-busqueda-prod">
+          <input type="submit" class="icon-search" value="">
+        </form>
+      </div>
+      <div class="cont-navegacion">
+        <nav>
+          <ul>
+            <li><a href="/products">Productos</a></li>
+            <li><a href="/vender">Vender</a></li>
+            <li><a href="#">Mi Direccion</a></li>
+            <li><a href="#">Ayuda</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="cont-avatar">
+      <img src="/static/images/notification.png" alt="">
+      <a href="/cart"> <img class="anchor_carrito" src="/static/images/cart.png" alt="Carrito"> </a>
+
+      {{#if avatar}}
+      <div class="cont-perfil-avatar">
+        <img src={{avatar}} class="circle-avatar" alt="Avatar">
+      </div>
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+      {{else}}<a class="navbar-brand" href="/login">Sign in</a> {{/if}}
+    </div>
+  </header>
+  <div class="betweenheader">
+    <div class="first-between"></div>
+    <div class="second-between">
+      <ul>
+        <li> <a href="/">Inicio</a> </li>
+        <li>Ofertas</li>
+        <li>Cliente</li>
+        <li>Categorias</li>
+        <li>Servicios</li>
+        <li>Politicas</li>
+      </ul>
+    </div>
+    <div class="third-between"></div>
+  </div>
+  {{{body}}}
+
+  {{!-- <img src={{avatar}} class="rounded-circle" style="width: 30px;" alt="Avatar"> --}}
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script src="/static/js/search.js"></script>
+</body>
+
+</html>
+{{!-- <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    {{#if avatar}}<img src={{avatar}} class="rounded-circle" style="width: 30px;" alt="Avatar"> {{else}}<a
+      class="navbar-brand" href="/login">Sign in</a> {{/if}}
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,12 +114,4 @@
       </ul>
     </div>
   </div>
-</nav>
-
-        {{{body}}}
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    </body>
-</html>
+</nav> --}}

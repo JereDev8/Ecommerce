@@ -1,0 +1,63 @@
+<h3 style="text-align: center;" >Formas de pago</h3>
+
+
+<div style="display: flex; height: 50vh; ">
+<form action="/email" method="get" style="width: 50%; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <fieldset>
+    <legend>Elige un metodo</legend>
+
+    <div>
+      <input type="radio" id="huey" name="drone" value="huey"
+             checked>
+      <label for="huey">Efectivo</label>
+    </div>
+
+    <div>
+      <input type="radio" id="dewey" name="drone" value="dewey">
+      <label for="dewey">Debito</label>
+    </div>
+
+    <div>
+      <input type="radio" id="louie" name="drone" value="louie">
+      <label for="louie">Credito</label>
+    </div>
+</fieldset>
+
+<button type="submit"> Finalizar compra </button>
+</form>
+
+<div style="width: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <table style="border: 1px solid; width: 50%; ">
+        <tr style="border: 1px solid;">
+
+            <th>Producto</th>
+
+            <th>Precio</th>
+
+         </tr>
+    
+    {{#each carrito}}
+    <tr >
+
+        <td>{{name}}</td>
+
+        <td> {{price}} </td>
+
+    </tr>
+
+    {{/each}}
+
+    <tr>
+        <th> Total </th>
+        <th> {{total}} </th>
+    </tr>
+    </table>
+</div>
+
+</div>
+
+<table class="default">
+
+  
+
+  

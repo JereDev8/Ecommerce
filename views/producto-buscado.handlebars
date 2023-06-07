@@ -1,0 +1,24 @@
+{{#if prods}}
+{{#each prods}}
+
+<div class="card">
+    <div class="cont-img-prod">
+        <img src={{thumbnail}} alt="">
+    </div>
+    <div class="info-prod">
+        <div class="cont-name-prod">
+            <h4>{{name}}</h4>
+            <b> {{price}} </b>
+        </div>
+        <p>Envio gratis</p>
+    </div>
+    <div class="btn-agregar">
+        <button id={{_id}} class="boton-comprar{{@index}}"> Agregar al carrito </button>
+    </div>
+</div>
+
+{{/each}}
+{{else}} 
+<h1>No hemos encontrado productos en base a tu busqueda</h1>
+{{/if}}
+

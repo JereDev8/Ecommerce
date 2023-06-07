@@ -18,6 +18,14 @@ const schema= new mongoose.Schema({
     role:{
         type:String,
         default:'user'
+    },
+    avatar:{
+        type:String,
+        default: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png'
+    },
+    carrito:{
+        type: Array,
+        default: []
     }
 }) 
 
