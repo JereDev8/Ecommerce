@@ -1,13 +1,1 @@
-Cosas a lograr desde 23/02/23:
-- Una mejor vista en el inicio (opcional)
-- Mejores cards de los productos (opcional)
-- La seccion "agregar productos" solo va a estar habilitada para usuarios con rol de "admin" 
-- Que los usuarios puedan loguearse desde mi pagina
-- Que los usuarios puedan loguearse con google o github
-- Que puedan agregar productos a su carrito
-- Que el servidor reconozca al usuario desde su sesion y pueda tener su carrito como lo dejo
-- Que tenga un ttl de 5 dias
-- Que los productos aparezcan en el ecommerce segun su categoria
-- Poder buscar productos
-- Que cada vez que entre me aparezcan cosas relacionadas a mis anteriores busquedas
-- En vender, para que el cliente quiera subir la foto de su producto debe poder subir archivos desde su computadora o celular
+
